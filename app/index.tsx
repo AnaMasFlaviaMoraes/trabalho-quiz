@@ -1,7 +1,7 @@
 
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { SafeAreaView, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { buttons, inputs, layout, texts } from '../styles/ui';
 
 export default function LoginScreen() {
@@ -13,13 +13,17 @@ export default function LoginScreen() {
 
     const handleStart = () => {
         // const trimmed = nome.trim();
-        // if (!trimmed) return;
+        if (!isValid) return;
         router.push({ pathname: '/quiz', params: { username: nome, email: email } });
     };
+    
+
+    console.log('nome:', nome, 'email:', email, 'isValid:', isValid);
+
 
 
     return (
-        <SafeAreaView style={layout.container}>
+        <View style={layout.container}>
             <Text style={texts.title}>Quiz de Harry Potter</Text>
             <Text style={texts.subtitle}>Entre com seu nome para começar</Text>
 
@@ -31,7 +35,7 @@ export default function LoginScreen() {
                 onChangeText={setNome}
                 autoCapitalize="words"
                 returnKeyType="done"
-                onSubmitEditing={handleStart}
+                onSubmitEditing={() => { if (isValid) handleStart(); }}
             />
 
             <Text style={texts.subtitle}>Entre com seu email</Text>
@@ -55,9 +59,9 @@ export default function LoginScreen() {
                     ]
                 } 
                 onPress={handleStart} 
-                disabled={!(nome && email)}>
+                >
                 <Text style={buttons.primaryText}>Começar</Text>
             </TouchableOpacity>
-        </SafeAreaView>
+        </View>
     );
 }
