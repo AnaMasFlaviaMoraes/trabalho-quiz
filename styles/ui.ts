@@ -21,7 +21,7 @@ export const layout = StyleSheet.create({
 
 export const texts = StyleSheet.create({
     title: { ...typography.title, color: colors.text, textAlign: 'center' as const, marginTop: spacing.lg },
-    subtitle: { ...typography.body, color: colors.textSoft, textAlign: 'center' as const, marginBottom: spacing.sm },
+    subtitle: { ...typography.body, color: colors.textSoft, textAlign: 'center' as const, marginBottom: spacing.sm, marginTop: 15 },
     username: { color: '#a5b4fc', fontWeight: '600', textAlign: 'center' as const, marginTop: spacing.xs },
     progress: { color: colors.textSoft },
     question: { ...typography.h2, color: '#e5e7eb', marginBottom: spacing.md },
@@ -29,6 +29,7 @@ export const texts = StyleSheet.create({
     bold: { fontWeight: '800', color: colors.highlight },
     optionText: { color: colors.text, ...typography.body },
     optionLetter: { color: colors.accentSoft, fontWeight: '800' },
+    email: { ...typography.body, color: colors.highlight, textAlign: 'center' as const, marginBottom: spacing.sm, marginTop: 15 },
 });
 
 
@@ -78,4 +79,11 @@ export const options = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 14,
     },
+});
+
+export const div = StyleSheet.create({
+    separator: { 
+        marginTop: 100,
+
+    }
 });

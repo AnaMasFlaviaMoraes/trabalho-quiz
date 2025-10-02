@@ -2,10 +2,11 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import QuizView from '../components/QuizView';
 import { QUESTION_BANK } from '../constants/questions';
-import { shuffle } from '../lib/shuffle';
+import { shuffle } from '../utils/shuffle';
 
 export default function QuizRoute() {
   const { username = '' } = useLocalSearchParams<{ username?: string }>();
+  const { email = '' } = useLocalSearchParams<{ email?: string }>();
   const router = useRouter();
 
   const perguntas = useMemo(() => shuffle(QUESTION_BANK).slice(0, 5), []);
@@ -22,7 +23,17 @@ export default function QuizRoute() {
     if (next < perguntas.length) {
       setI(next);
     } else {
-      router.replace({ pathname: '/result', params: { username, score: String(acertos + (acertou ? 1 : 0)), total: String(perguntas.length) } });
+      router.replace(
+        { 
+            pathname: '/result',
+            params: { 
+                username,
+                email,
+                score: String(acertos + (acertou ? 1 : 0)),
+                total: String(perguntas.length) 
+            }
+         }
+        );
     }
   };
 

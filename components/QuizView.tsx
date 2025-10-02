@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, SafeAreaView, Text, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import { layout, texts } from '../styles/ui';
 import OptionCard from './OptionCard';
 
@@ -13,7 +13,7 @@ export default function QuizView({ username, pergunta, onResponder }: QuizViewPr
   const { enunciado, alternativas, indiceAtual, total } = pergunta;
 
   return (
-    <SafeAreaView style={layout.container}>
+    <View style={layout.container}>
       <Text style={texts.username}>Jogador: {username}</Text>
       <View style={{ alignItems: 'center', marginVertical: 8 }}>
         <Text style={texts.progress}>Pergunta {indiceAtual + 1} de {total}</Text>
@@ -38,6 +38,6 @@ export default function QuizView({ username, pergunta, onResponder }: QuizViewPr
           contentContainerStyle={{ paddingVertical: 8 }}
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
